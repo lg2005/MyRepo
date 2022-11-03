@@ -28,7 +28,7 @@ def face_detection(image):
     print('检测人脸信息如下：\n', faces)
     for x, y, w, h in faces:
         # 在原图像上绘制圆形检测人脸
-        cv2.circle(img=image, center=(x + w // 2, y + h // 2), radius=w // 2, color=[0, 255, 0], thickness=2)
+        cv2.circle(img=image, center=(x + w // 2, y + h // 2), radius=w // 2+2, color=[0, 255, 0], thickness=2)
     #cv2.imshow('result', image)
     return faces
 
@@ -78,7 +78,9 @@ def main():
                     else:
                         xy.append([coor[0][0],coor[0][1], coor[2][0], coor[2][1]])
                     cv2.rectangle(img=frame, pt1=(xy[index][0], xy[index][1]), pt2=(xy[index][2], xy[index][3]), color=[0, 0, 255], thickness=2)
-                    cv2.imshow('output', frame)
+
+                    # no need show frame here
+                    #cv2.imshow('output', frame)
             #end for
 
             face_detection(frame)
